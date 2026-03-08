@@ -1100,81 +1100,393 @@ Agent 应当列出已安装的技能及其功能说明。
 
 ### BioOS 扩展生物信息工具套件
 
-> 以下技能来自 BioOS 项目，涵盖完整的生物信息学分析链路。中文描述详见英文文档对应章节。
+#### 序列与比对
+| 技能 | 描述 |
+|------|------|
+| bio-alignment-sorting | 使用 samtools sort 按坐标或名称排序 SAM/BAM 文件。 |
+| bio-alignment-filtering | 按标志、质量、区域或配对状态过滤比对结果。 |
+| bio-alignment-indexing | 使用 samtools index 为 BAM/CRAM 文件建立索引以实现随机访问。 |
+| bio-alignment-validation | 验证比对文件完整性，检测截断或损坏文件。 |
+| bio-alignment-files-bam-statistics | 计算比对统计数据：flagstat、idxstats、覆盖深度。 |
+| bio-sam-bam-basics | 使用 samtools/pysam 读取、检查和操作 SAM/BAM 文件。 |
+| bio-duplicate-handling | 使用 Picard 或 samtools markdup 标记和去除 PCR 重复。 |
+| bio-pileup-generation | 从 BAM 生成碱基级 pileup 用于变异检测和覆盖分析。 |
+| bio-reference-operations | 下载、索引和管理参考基因组 FASTA 文件。 |
+| bio-blast-searches | 针对本地或远程数据库运行 BLAST 搜索以进行序列同源性分析。 |
+| bio-local-blast | 本地搭建并运行 BLAST+，支持自定义数据库。 |
+| bio-entrez-search | 搜索 NCBI Entrez 数据库（PubMed、基因、核苷酸、蛋白质、SRA）。 |
+| bio-entrez-fetch | 通过登录号或 UID 从 NCBI Entrez 获取记录。 |
+| bio-entrez-link | 跨 NCBI Entrez 数据库检索关联记录。 |
+| bio-uniprot-access | 查询 UniProt 获取蛋白质序列、注释和交叉引用。 |
+| bio-geo-data | 下载和解析 GEO 数据集和系列矩阵。 |
+| bio-sra-data | 使用 fasterq-dump 从 NCBI SRA 下载原始测序数据。 |
+| bio-batch-downloads | 批量从 NCBI、EBI、Ensembl 下载生物信息学数据。 |
 
-#### 序列与比对 (22个技能)
-bio-alignment-sorting / bio-alignment-filtering / bio-alignment-indexing / bio-alignment-validation / bio-alignment-files-bam-statistics / bio-sam-bam-basics / bio-duplicate-handling / bio-pileup-generation / bio-reference-operations / bio-blast-searches / bio-local-blast / bio-entrez-search / bio-entrez-fetch / bio-entrez-link / bio-uniprot-access / bio-geo-data / bio-sra-data / bio-batch-downloads / bio-seq-objects / bio-sequence-properties / bio-sequence-similarity / bio-sequence-slicing
+#### 序列分析
+| 技能 | 描述 |
+|------|------|
+| bio-seq-objects | 使用 BioPython 序列对象：SeqRecord、特征、注释。 |
+| bio-sequence-properties | 计算序列属性：MW、pI、疏水性、消光系数。 |
+| bio-sequence-similarity | 通过成对比对和百分比同一性计算序列相似性。 |
+| bio-sequence-slicing | 从 FASTA/FASTQ 中切片、提取和操作子序列。 |
+| bio-motif-search | 使用 FIMO、MAST 或正则表达式搜索调控基序。 |
+| bio-codon-usage | 分析密码子使用偏差并优化表达序列。 |
+| bio-transcription-translation | 转录和翻译 DNA 序列，处理遗传密码变体。 |
+| bio-reverse-complement | 计算反向互补序列，支持链感知序列操作。 |
+| bio-primer-design-primer-basics | 使用 Primer3 为标准扩增设计 PCR 引物。 |
+| bio-primer-design-primer-validation | 通过 BLAST 和热力学分析验证引物特异性。 |
+| bio-primer-design-qpcr-primers | 设计具有效率和特异性优化的 qPCR/RT-PCR 引物。 |
+| bio-restriction-sites | 在 DNA 序列中查找限制酶识别位点。 |
+| bio-restriction-mapping | 创建限制图谱和体外酶切模式。 |
+| bio-restriction-fragment-analysis | 分析克隆和凝胶预测的限制片段模式。 |
+| bio-restriction-enzyme-selection | 根据切割位点和兼容性选择克隆用限制酶。 |
 
-#### 序列功能分析 (12个技能)
-bio-motif-search / bio-codon-usage / bio-transcription-translation / bio-reverse-complement / bio-primer-design-primer-basics / bio-primer-design-primer-validation / bio-primer-design-qpcr-primers / bio-restriction-sites / bio-restriction-mapping / bio-restriction-fragment-analysis / bio-restriction-enzyme-selection / bio-read-alignment-bwa-alignment
+#### 读段比对
+| 技能 | 描述 |
+|------|------|
+| bio-read-alignment-bwa-alignment | 使用 BWA-MEM 将短读段比对到参考基因组。 |
+| bio-read-alignment-bowtie2-alignment | 使用 Bowtie2 比对短读段，支持局部和端对端模式。 |
+| bio-read-alignment-hisat2-alignment | 使用 HISAT2 进行剪接感知 RNA-seq 比对。 |
+| bio-read-alignment-star-alignment | 使用高速 STAR 比对器进行 RNA-seq，支持连接检测。 |
 
-#### 基因组组装 (8个技能)
-bio-genome-assembly-long-read-assembly / bio-genome-assembly-hifi-assembly / bio-genome-assembly-short-read-assembly / bio-genome-assembly-metagenome-assembly / bio-genome-assembly-assembly-qc / bio-genome-assembly-assembly-polishing / bio-genome-assembly-scaffolding / bio-genome-assembly-contamination-detection
+#### 基因组组装
+| 技能 | 描述 |
+|------|------|
+| bio-genome-assembly-long-read-assembly | 使用 Flye 或 Canu 从 ONT/PacBio 长读段进行从头组装。 |
+| bio-genome-assembly-hifi-assembly | 使用 Hifiasm 对 HiFi (CCS) 读段进行高精度基因组组装。 |
+| bio-genome-assembly-short-read-assembly | 使用 SPAdes 进行 Illumina 从头组装，支持宏基因组/细菌/转录组。 |
+| bio-genome-assembly-metagenome-assembly | 宏基因组组装：共组装、分箱、MAG 恢复。 |
+| bio-genome-assembly-assembly-qc | 使用 QUAST、BUSCO 和 NGA50 指标评估组装质量。 |
+| bio-genome-assembly-assembly-polishing | 使用 Medaka (ONT) 或 NextPolish (Illumina) 打磨组装结果。 |
+| bio-genome-assembly-scaffolding | 使用 Hi-C、光学图谱或长读段对 contig 进行支架化。 |
+| bio-genome-assembly-contamination-detection | 检测和去除组装基因组中的污染。 |
 
-#### 基因组区间与注释 (7个技能)
-bio-genome-intervals-bed-file-basics / bio-genome-intervals-interval-arithmetic / bio-genome-intervals-proximity-operations / bio-genome-intervals-coverage-analysis / bio-genome-intervals-bigwig-tracks / bio-genome-intervals-gtf-gff-handling / bio-bedgraph-handling
+#### 基因组区间与注释
+| 技能 | 描述 |
+|------|------|
+| bio-genome-intervals-bed-file-basics | 使用 pybedtools/bedtools 读取、写入和过滤 BED 文件。 |
+| bio-genome-intervals-interval-arithmetic | 对基因组区间进行交集、相减、合并和补集操作。 |
+| bio-genome-intervals-proximity-operations | 查找最近特征并计算区间之间的距离。 |
+| bio-genome-intervals-coverage-analysis | 计算基因组区域的读段深度覆盖率。 |
+| bio-genome-intervals-bigwig-tracks | 从 BAM/bedGraph 创建和查询 BigWig 信号轨迹。 |
+| bio-genome-intervals-gtf-gff-handling | 解析和操作 GTF/GFF 注释文件。 |
+| bio-bedgraph-handling | 处理 bedGraph 覆盖文件：算术运算、归一化、格式转换。 |
 
-#### RNA定量与表达矩阵 (8个技能)
-bio-rna-quantification-featurecounts-counting / bio-rna-quantification-alignment-free-quant / bio-rna-quantification-tximport-workflow / bio-rna-quantification-count-matrix-qc / bio-expression-matrix-counts-ingest / bio-expression-matrix-gene-id-mapping / bio-expression-matrix-metadata-joins / bio-expression-matrix-sparse-handling
+#### RNA 定量
+| 技能 | 描述 |
+|------|------|
+| bio-rna-quantification-featurecounts-counting | 使用 subread 包的 featureCounts 统计每个基因的读段数。 |
+| bio-rna-quantification-alignment-free-quant | 使用 Salmon 或 Kallisto 进行伪比对定量。 |
+| bio-rna-quantification-tximport-workflow | 使用 tximport 将 Salmon/Kallisto 定量结果导入 R/DESeq2。 |
+| bio-rna-quantification-count-matrix-qc | QC 计数矩阵：文库大小、零膨胀、基因检测率。 |
+| bio-expression-matrix-counts-ingest | 从多种定量工具加载和验证计数矩阵。 |
+| bio-expression-matrix-gene-id-mapping | 在 Ensembl、Entrez、HGNC 和基因符号标识符之间映射。 |
+| bio-expression-matrix-metadata-joins | 将样品元数据连接到表达矩阵用于下游分析。 |
+| bio-expression-matrix-sparse-handling | 使用 scipy 稀疏格式高效处理稀疏计数矩阵。 |
 
-#### 表观转录组与CLIP-seq (10个技能)
-bio-epitranscriptomics系列5个(m6A甲基化分析) / bio-clip-seq系列5个(RNA结合蛋白结合位点)
+#### 表观转录组与 CLIP-seq
+| 技能 | 描述 |
+|------|------|
+| bio-epitranscriptomics-merip-preprocessing | 预处理 MeRIP-seq 数据用于 m6A 甲基化分析。 |
+| bio-epitranscriptomics-m6a-peak-calling | 使用 exomePeak2 或 MACS2 从 MeRIP-seq 中检测 m6A 峰。 |
+| bio-epitranscriptomics-m6anet-analysis | 使用 m6Anet 深度学习进行纳米孔直接 RNA m6A 检测。 |
+| bio-epitranscriptomics-m6a-differential | 不同条件之间的差异 m6A 甲基化分析。 |
+| bio-epitranscriptomics-modification-visualization | 可视化 RNA 修饰谱和 metagene 图。 |
+| bio-clip-seq-clip-preprocessing | 预处理 CLIP-seq/eCLIP 数据：接头修剪、去多重化。 |
+| bio-clip-seq-clip-alignment | 使用 STAR 比对 CLIP-seq 读段，处理唯一映射读段。 |
+| bio-clip-seq-clip-peak-calling | 使用 PureCLIP 或 MACS2 从 CLIP-seq 中检测 RBP 结合峰。 |
+| bio-clip-seq-binding-site-annotation | 用基因组特征和 RNA 区域注释 CLIP-seq 峰。 |
+| bio-clip-seq-clip-motif-analysis | 从 CLIP-seq 峰序列中发现 RBP 结合基序。 |
 
-#### 小RNA-seq (5个技能)
-bio-small-rna-seq-smrna-preprocessing / bio-small-rna-seq-mirdeep2-analysis / bio-small-rna-seq-mirge3-analysis / bio-small-rna-seq-target-prediction / bio-small-rna-seq-differential-mirna
+#### 小 RNA-seq
+| 技能 | 描述 |
+|------|------|
+| bio-small-rna-seq-smrna-preprocessing | 预处理小 RNA-seq：接头修剪、大小筛选。 |
+| bio-small-rna-seq-mirdeep2-analysis | 使用 miRDeep2 鉴定和定量已知/新型 miRNA。 |
+| bio-small-rna-seq-mirge3-analysis | 使用 miRge3.0 进行 miRNA 注释和定量。 |
+| bio-small-rna-seq-target-prediction | 使用 TargetScan 或 miRDB 预测 miRNA 靶基因。 |
+| bio-small-rna-seq-differential-mirna | 使用 DESeq2/edgeR 进行差异 miRNA 表达分析。 |
 
-#### 群体遗传学与单体型分析 (10个技能)
-bio-population-genetics系列6个 / bio-phasing-imputation系列4个
+#### 群体遗传学与单体型分析
+| 技能 | 描述 |
+|------|------|
+| bio-population-genetics-plink-basics | PLINK2 用于 GWAS QC、LD 修剪和基础群体遗传学。 |
+| bio-population-genetics-population-structure | 使用 PCA、ADMIXTURE 和 STRUCTURE 进行群体分层分析。 |
+| bio-population-genetics-linkage-disequilibrium | 计算 LD 指标（r²、D'）和 LD 衰减分析。 |
+| bio-population-genetics-association-testing | 使用 PLINK、BOLT-LMM 或 SAIGE 进行 GWAS 关联检验。 |
+| bio-population-genetics-scikit-allel-analysis | 使用 scikit-allel 进行群体遗传学分析：多样性、Fst、单倍型。 |
+| bio-population-genetics-selection-statistics | 检测自然选择信号：iHS、XP-EHH、Tajima's D。 |
+| bio-phasing-imputation-haplotype-phasing | 使用 SHAPEIT4 或 BEAGLE 进行变异位点分型。 |
+| bio-phasing-imputation-genotype-imputation | 使用 Michigan/TOPMed 填补服务器进行缺失基因型填补。 |
+| bio-phasing-imputation-reference-panels | 选择和准备用于填补的参考面板（1KGP、HRC、TOPMed）。 |
+| bio-phasing-imputation-imputation-qc | QC 填补数据：R² 过滤、INFO 分数、等位基因一致性。 |
 
-#### 比较基因组与系统进化 (10个技能)
-bio-comparative-genomics系列5个 / bio-phylo系列5个
+#### 比较基因组与系统进化
+| 技能 | 描述 |
+|------|------|
+| bio-comparative-genomics-ortholog-inference | 使用 OrthoFinder 或 OMA 推断直系同源和旁系同源基因。 |
+| bio-comparative-genomics-synteny-analysis | 使用 MCScan 或 SyRI 检测基因组间共线性块。 |
+| bio-comparative-genomics-positive-selection | 使用 PAML、HyPhy 或 dN/dS 比值检验正选择。 |
+| bio-comparative-genomics-hgt-detection | 检测微生物基因组中的水平基因转移事件。 |
+| bio-comparative-genomics-ancestral-reconstruction | 使用 ASR 方法重建祖先序列和性状。 |
+| bio-phylo-tree-io | 以 Newick、Nexus、PhyloXML 格式读写系统发育树。 |
+| bio-phylo-modern-tree-inference | 使用 IQ-TREE 2 或 FastTree 进行最大似然树推断。 |
+| bio-phylo-tree-manipulation | 对系统发育树进行根定、修剪、重排序和注释。 |
+| bio-phylo-tree-visualization | 使用 iTOL、ETE3 或 ggtree 可视化系统发育树。 |
+| bio-phylo-distance-calculations | 计算成对系统发育距离和多样性指标。 |
 
-#### 系统生物学与代谢建模 (5个技能)
-bio-systems-biology-flux-balance-analysis / bio-systems-biology-metabolic-reconstruction / bio-systems-biology-gene-essentiality / bio-systems-biology-context-specific-models / bio-systems-biology-model-curation
+#### 系统生物学与代谢建模
+| 技能 | 描述 |
+|------|------|
+| bio-systems-biology-flux-balance-analysis | 使用 COBRApy 进行代谢网络建模的通量平衡分析（FBA）。 |
+| bio-systems-biology-metabolic-reconstruction | 从基因组注释重建全基因组代谢模型。 |
+| bio-systems-biology-gene-essentiality | 通过代谢模型中的单基因敲除预测必需基因。 |
+| bio-systems-biology-context-specific-models | 从表达数据构建情境特异性代谢模型（GIMME、iMAT）。 |
+| bio-systems-biology-model-curation | 整理 SBML 代谢模型：质量/电荷平衡、缺口填充。 |
 
-#### 实验设计、机器学习与报告 (16个技能)
-bio-experimental-design系列4个 / bio-machine-learning系列6个 / bio-reporting系列5个 / bio-research-tools-biomarker-signature-studio
+#### 实验设计、机器学习与报告
+| 技能 | 描述 |
+|------|------|
+| bio-experimental-design-sample-size | 组学实验的功效分析和样本量计算。 |
+| bio-experimental-design-power-analysis | 检测差异信号的统计功效分析。 |
+| bio-experimental-design-batch-design | 使用 ComBat 设计优化样品批次以最小化混淆效应。 |
+| bio-experimental-design-multiple-testing | 多重检验校正：Bonferroni、BH/FDR、q 值。 |
+| bio-machine-learning-omics-classifiers | 在组学数据上训练分类器：随机森林、SVM、XGBoost。 |
+| bio-machine-learning-biomarker-discovery | 使用 LASSO、弹性网、SHAP 从组学数据中识别生物标志物。 |
+| bio-machine-learning-model-validation | 交叉验证、AUC-ROC、校准和置换检验。 |
+| bio-machine-learning-survival-analysis | 生存分析机器学习：RSF、DeepSurv、CoxBoost。 |
+| bio-machine-learning-atlas-mapping | 使用 scANVI 或 Symphony 将查询细胞映射到参考图谱。 |
+| bio-machine-learning-prediction-explanation | 使用 SHAP 和特征重要性解释组学机器学习预测。 |
+| bio-reporting-automated-qc-reports | 为组学管道生成自动化 MultiQC 风格报告。 |
+| bio-reporting-jupyter-reports | 创建带有可重复分析代码的 Jupyter notebook 报告。 |
+| bio-reporting-rmarkdown-reports | 渲染带有集成图表和统计数据的 Rmarkdown 报告。 |
+| bio-reporting-quarto-reports | 从分析代码构建 Quarto 多格式报告（HTML/PDF）。 |
+| bio-reporting-figure-export | 以指定 DPI 导出 PDF/SVG/TIFF 格式的出版质量图表。 |
+| bio-research-tools-biomarker-signature-studio | 构建、验证和可视化多组学生物标志物特征。 |
 
-#### 端到端工作流管道 (37个技能)
-bio-workflows-*系列33个全流程管道 + bio-splicing-pipeline / bio-liquid-biopsy-pipeline / bio-workflow-management系列4个(Snakemake/Nextflow/CWL/WDL)
+#### 端到端工作流管道
+| 技能 | 描述 |
+|------|------|
+| bio-workflows-fastq-to-variants | 完整的 FASTQ → 比对 → 变异检测管道。 |
+| bio-workflows-rnaseq-to-de | RNA-seq → 比对 → 计数 → DESeq2 差异表达。 |
+| bio-workflows-scrnaseq-pipeline | 单细胞 RNA-seq 端到端：Cell Ranger → Scanpy → 聚类。 |
+| bio-workflows-atacseq-pipeline | ATAC-seq：修剪 → 比对 → 峰检测 → 差异分析。 |
+| bio-workflows-chipseq-pipeline | ChIP-seq：比对 → 峰检测 → 基序分析 → 注释。 |
+| bio-workflows-methylation-pipeline | WGBS/RRBS：bismark 比对 → 甲基化检测 → DMR 识别。 |
+| bio-workflows-metagenomics-pipeline | 宏基因组：QC → 分类 → 功能注释 → AMR。 |
+| bio-workflows-metabolomics-pipeline | LC-MS/GC-MS：预处理 → 注释 → 统计分析。 |
+| bio-workflows-proteomics-pipeline | DDA/DIA 蛋白质组：搜索 → 定量 → 差异丰度分析。 |
+| bio-workflows-gwas-pipeline | GWAS：QC → 填补 → 关联 → 精细定位 → 注释。 |
+| bio-workflows-somatic-variant-pipeline | 使用 GATK Mutect2/Strelka2 进行肿瘤-正常体细胞变异检测。 |
+| bio-workflows-cnv-pipeline | 拷贝数变异检测：WGS/WES CNV 检测和注释。 |
+| bio-workflows-spatial-pipeline | 空间转录组：比对 → 解卷积 → 结构域检测。 |
+| bio-workflows-multi-omics-pipeline | 多组学整合管道：MOFA、SNF、相似性网络融合。 |
+| bio-workflows-multiome-pipeline | 10x Multiome：联合 scRNA-seq + scATAC-seq 处理和整合。 |
+| bio-workflows-hic-pipeline | Hi-C 接触图生成、归一化、TAD/环路检测。 |
+| bio-workflows-neoantigen-pipeline | 新抗原预测：体细胞变异 → MHC 结合 → 免疫原性。 |
+| bio-workflows-microbiome-pipeline | 微生物组：16S/ITS 扩增子或散弹枪 → 多样性 → 差异分析。 |
+| bio-workflows-crispr-screen-pipeline | CRISPR 筛选：向导计数 → MAGeCK → 命中检测 → 可视化。 |
+| bio-workflows-crispr-editing-pipeline | CRISPR 编辑：扩增子测序 → CRISPResso2 → 结果分析。 |
+| bio-workflows-tcr-pipeline | TCR/BCR：V(D)J 比对 → 克隆型 → 文库分析。 |
+| bio-workflows-riboseq-pipeline | Ribo-seq：足迹比对 → 周期性 → ORF 检测。 |
+| bio-workflows-smrna-pipeline | 小 RNA-seq：miRNA 鉴定 → 定量 → 差异表达分析。 |
+| bio-workflows-merip-pipeline | MeRIP-seq：m6A 峰检测 → 差异分析 → 基序分析。 |
+| bio-workflows-clip-pipeline | CLIP-seq：峰检测 → 结合位点注释 → 基序发现。 |
+| bio-workflows-imc-pipeline | 成像质谱细胞仪：分割 → 表型鉴定 → 空间分析。 |
+| bio-workflows-cytometry-pipeline | 流式/质谱细胞仪：QC → 设门 → 聚类 → 差异分析。 |
+| bio-workflows-longread-sv-pipeline | 长读段结构变异检测和注释管道。 |
+| bio-workflows-genome-assembly-pipeline | 从头基因组组装：原始读段 → 组装 → QC → 注释。 |
+| bio-workflows-outbreak-pipeline | 病原体基因组：组装 → 分型 → 系统动力学 → 传播分析。 |
+| bio-workflows-biomarker-pipeline | 生物标志物发现：组学 → 特征选择 → 验证 → 报告。 |
+| bio-workflows-metabolic-modeling-pipeline | 代谢模型重建 → FBA → 模拟 → 可视化。 |
+| bio-splicing-pipeline | 选择性剪接分析：rMATS → PSI → 差异分析 → sashimi 图。 |
+| bio-liquid-biopsy-pipeline | 液体活检：cfDNA/ctDNA QC → 突变检测 → TMB → MRD。 |
+| bio-workflow-management-snakemake-workflows | 创建和管理 Snakemake 可重复生物信息工作流。 |
+| bio-workflow-management-nextflow-pipelines | 构建和运行 Nextflow (DSL2) 生物信息管道。 |
+| bio-workflow-management-cwl-workflows | 编写通用工作流语言（CWL）可移植工作流定义。 |
+| bio-workflow-management-wdl-workflows | 创建用于 Terra/Cromwell 生物信息执行的 WDL 工作流。 |
 
-#### 生信数据可视化 (11个技能)
-bio-data-visualization系列11个：热图聚类/火山图/环形图/基因组轨迹/ggplot2/交互可视化/UpSet图/多面板图/颜色调色板/特化组学图
+#### 生信数据可视化
+| 技能 | 描述 |
+|------|------|
+| bio-data-visualization-heatmaps-clustering | 使用 ComplexHeatmap 或 seaborn 进行层次聚类热图。 |
+| bio-data-visualization-volcano-customization | 使用 ggplot2 或 matplotlib 为差异表达结果定制火山图。 |
+| bio-data-visualization-circos-plots | 使用 Circos 或 pycirclize 进行环形基因组可视化。 |
+| bio-data-visualization-genome-browser-tracks | 从 BAM/BigWig 生成基因组浏览器轨迹和 IGV 会话。 |
+| bio-data-visualization-genome-tracks | 使用 pyGenomeTracks 绘制多面板基因组轨迹图。 |
+| bio-data-visualization-ggplot2-fundamentals | R ggplot2 用于出版质量基因组学和组学图表。 |
+| bio-data-visualization-interactive-visualization | 使用 Plotly、Bokeh 或 shiny 进行交互式组学可视化。 |
+| bio-data-visualization-upset-plots | UpSet 图用于多集合交集可视化。 |
+| bio-data-visualization-multipanel-figures | 使用 cowplot 或 patchwork 组合多面板出版图表。 |
+| bio-data-visualization-color-palettes | 科学色彩调色板：色盲友好、感知均匀、发散型。 |
+| bio-data-visualization-specialized-omics-plots | 专用图表：棒棒糖图（突变）、circomap、oncoprint。 |
 
 ---
 
 ### 肿瘤学与精准医学智能体 (21个)
-autonomous-oncology-agent, precision-oncology-agent, pan-cancer-multiomics-agent, tumor-clonal-evolution-agent, tumor-heterogeneity-agent, tumor-mutational-burden-agent, chromosomal-instability-agent, cancer-metabolism-agent, liquid-biopsy-analytics-agent, ctdna-dynamics-mrd-agent, mrd-edge-detection-agent, hrd-analysis-agent, computational-pathology-agent, multimodal-radpath-fusion-agent, radiomics-pathomics-fusion-agent, radgpt-radiology-reporter, organoid-drug-response-agent, pdx-model-analysis-agent, deep-visual-proteomics-agent, exosome-ev-analysis-agent, microbiome-cancer-agent
+
+| 技能 | 描述 |
+|------|------|
+| autonomous-oncology-agent | 自主肿瘤学研究智能体：文献挖掘、试验匹配、生物标志物分析和治疗假说生成。 |
+| precision-oncology-agent | 精准肿瘤学：肿瘤分子分型 → 可操作变异 → 治疗建议。 |
+| pan-cancer-multiomics-agent | 泛癌多组学整合，用于跨癌症模式发现和驱动基因识别。 |
+| tumor-clonal-evolution-agent | 建模肿瘤克隆进化：从体细胞变异生成系统发育树和克隆动力学。 |
+| tumor-heterogeneity-agent | 从大量和单细胞测序数据分析瘤内异质性。 |
+| tumor-mutational-burden-agent | 计算 TMB 并评估其对免疫治疗反应的预测价值。 |
+| chromosomal-instability-agent | 从拷贝数和 SV 数据量化染色体不稳定性（CIN）。 |
+| cancer-metabolism-agent | 从转录组学和代谢组学数据分析肿瘤代谢重编程。 |
+| liquid-biopsy-analytics-agent | 全面液体活检分析：ctDNA 检测、MRD 监测、治疗反应。 |
+| ctdna-dynamics-mrd-agent | 追踪 ctDNA 动力学用于微小残留病灶检测和治疗监测。 |
+| mrd-edge-detection-agent | 通过深度测序和错误抑制进行超灵敏 MRD 检测。 |
+| hrd-analysis-agent | 同源重组缺陷（HRD）分析用于 PARP 抑制剂反应预测。 |
+| computational-pathology-agent | 计算病理学：WSI 分析、组织分割、组织学特征提取。 |
+| multimodal-radpath-fusion-agent | 融合放射学和病理学影像用于综合癌症表型鉴定。 |
+| radiomics-pathomics-fusion-agent | 提取影像组学和病理组学特征并整合用于预测建模。 |
+| radgpt-radiology-reporter | AI 辅助放射学报告生成，基于影像学发现。 |
+| organoid-drug-response-agent | 分析患者来源类器官的药物反应用于个体化治疗预测。 |
+| pdx-model-analysis-agent | 患者来源异种移植模型分析，用于药物疗效和生物标志物发现。 |
+| deep-visual-proteomics-agent | 深度视觉蛋白质组学：激光捕获显微切割质谱数据的空间蛋白质组分析。 |
+| exosome-ev-analysis-agent | 细胞外囊泡和外泌体分析：货物分析和生物标志物发现。 |
+| microbiome-cancer-agent | 肿瘤微生物组分析及其在癌症进展和免疫治疗反应中的作用。 |
 
 ---
 
 ### 血液学与血液病 (7个)
-myeloma-mrd-agent, mpn-progression-monitor-agent, mpn-research-assistant, bone-marrow-ai-agent, hemoglobinopathy-analysis-agent, chip-clonal-hematopoiesis-agent, coagulation-thrombosis-agent
+
+| 技能 | 描述 |
+|------|------|
+| myeloma-mrd-agent | 从流式细胞仪和 NGS 数据评估多发性骨髓瘤 MRD。 |
+| mpn-progression-monitor-agent | 从连续分子数据监测骨髓增殖性肿瘤进展。 |
+| mpn-research-assistant | 骨髓增殖性肿瘤研究助手：文献、突变分析、治疗。 |
+| bone-marrow-ai-agent | 骨髓分析：原始细胞计数、免疫表型、疾病分类。 |
+| hemoglobinopathy-analysis-agent | 血红蛋白变体分析，镰状细胞和地中海贫血基因型-表型评估。 |
+| chip-clonal-hematopoiesis-agent | 不确定潜力的克隆性造血（CHIP）变异检测和风险评估。 |
+| coagulation-thrombosis-agent | 凝血途径分析、血栓形成倾向评估、抗凝指导。 |
 
 ---
 
 ### 免疫学与细胞治疗 (9个)
-cart-design-optimizer-agent, armored-cart-design-agent, tcell-exhaustion-analysis-agent, nk-cell-therapy-agent, tcr-pmhc-prediction-agent, tcr-repertoire-analysis-agent, immune-checkpoint-combination-agent, tme-immune-profiling-agent, cytokine-storm-analysis-agent
+
+| 技能 | 描述 |
+|------|------|
+| cart-design-optimizer-agent | 优化 CAR-T 细胞构建设计：scFv 选择、连接子、共刺激域。 |
+| armored-cart-design-agent | 设计装甲 CAR-T 细胞，带有细胞因子负载和耐药机制。 |
+| tcell-exhaustion-analysis-agent | 从 scRNA-seq 和 ATAC-seq 数据分析 T 细胞耗竭。 |
+| nk-cell-therapy-agent | NK 细胞治疗设计：受体工程、扩增方案、持久性。 |
+| tcr-pmhc-prediction-agent | 预测 TCR-pMHC 结合亲和力和选择性用于 TCR 治疗设计。 |
+| tcr-repertoire-analysis-agent | TCR 文库分析：V(D)J 使用、克隆型动力学、抗原特异性。 |
+| immune-checkpoint-combination-agent | 从肿瘤免疫微环境预测最佳免疫检查点联合策略。 |
+| tme-immune-profiling-agent | 肿瘤微环境免疫分型：细胞类型去卷积和空间定位。 |
+| cytokine-storm-analysis-agent | 细胞因子风暴检测、严重程度评分和干预建模。 |
 
 ---
 
 ### 单细胞与空间组学智能体 (15个)
-cellagent-annotation, universal-single-cell-annotator, scfoundation-model-agent, rna-velocity-agent, spatial-transcriptomics-agent, spatial-transcriptomics-analysis, spatial-agent, nicheformer-spatial-agent, spatial-epigenomics-agent, bioinformatics-singlecell, scrna-qc, compbioagent-explorer, simo-multiomics-integration-agent, epigenomics-methylgpt-agent, biomaster-workflows
+
+| 技能 | 描述 |
+|------|------|
+| cellagent-annotation | 使用标志基因数据库进行 AI 驱动的单细胞簇注释。 |
+| universal-single-cell-annotator | 使用基础模型和多参考整合的通用 scRNA-seq 注释器。 |
+| scfoundation-model-agent | 单细胞基础模型推断（scFoundation/scGPT）用于零样本注释。 |
+| rna-velocity-agent | 使用 scVelo 进行 RNA 速率分析，用于轨迹和命运决定推断。 |
+| spatial-transcriptomics-agent | 端到端空间转录组分析：QC、去卷积、结构域检测。 |
+| spatial-transcriptomics-analysis | 使用 Squidpy 和 SpatialDE 进行空间转录组分析。 |
+| spatial-agent | 空间组学智能体：将空间数据与影像、蛋白质和基因组层整合。 |
+| nicheformer-spatial-agent | 使用 Nicheformer 基础模型进行空间生态位分析，研究组织微环境。 |
+| spatial-epigenomics-agent | 空间表观基因组分析：空间分辨的染色质可及性和基因调控。 |
+| bioinformatics-singlecell | 通用单细胞生物信息学：聚类、轨迹、细胞通讯。 |
+| scrna-qc | 单细胞 RNA-seq 质量控制：双联体去除、环境 RNA、过滤阈值。 |
+| compbioagent-explorer | 多组学数据集分析的计算生物学探索智能体。 |
+| simo-multiomics-integration-agent | 使用 SIMO/MOFA+ 进行单细胞多组学整合，生成联合嵌入。 |
+| epigenomics-methylgpt-agent | 表观基因组和 DNA 甲基化分析，基于 MethylGPT 方法。 |
+| biomaster-workflows | BioMaster 工作流编排，用于端到端生物信息分析。 |
 
 ---
 
 ### 药物发现与分子设计 (35个)
-agentd-drug-discovery, chematagent-drug-discovery, chemcrow-drug-discovery, medea-therapeutic-discovery, molecule-evolution-agent, molecular-glue-discovery-agent, protac-design-agent, tpd-ternary-complex-agent, mage-antibody-generator, antibody-design-agent, aav-vector-design-agent, protein-structure-prediction, crispr-guide-design, crispr-offtarget-predictor, chemical-property-lookup, chemistry-agent, cryoem-ai-drug-design-agent, time-resolved-cryoem-agent, cnv-caller-agent, popeve-variant-predictor-agent, varcadd-pathogenicity, variant-interpretation-acmg, gene-panel-design-agent, pharmacogenomics-agent, multi-ancestry-prs-agent, prs-net-deep-learning-agent, cellfree-rna-agent, long-read-sequencing-agent, bayesian-optimizer
+
+| 技能 | 描述 |
+|------|------|
+| agentd-drug-discovery | AgentD 自主药物发现：靶点识别、先导化合物筛选、ADMET 优化。 |
+| chematagent-drug-discovery | CheMatAgent：化学感知药物设计，支持逆合成和性质优化。 |
+| chemcrow-drug-discovery | ChemCrow 药物发现工具包：网络搜索、Python、化学工具集成。 |
+| medea-therapeutic-discovery | MEDEA 治疗发现：多模态证据聚合用于靶点-疾病验证。 |
+| molecule-evolution-agent | 定向分子进化：用于化合物优化和文库设计的生成模型。 |
+| molecular-glue-discovery-agent | 分子胶水发现：诱导邻近降解剂和三元复合物稳定剂。 |
+| protac-design-agent | PROTAC 设计：E3 连接酶配体选择、连接子优化、三元复合物建模。 |
+| tpd-ternary-complex-agent | 靶向蛋白降解三元复合物建模和协同性预测。 |
+| mage-antibody-generator | MAGE 抗体生成器：序列设计、人源化、亲和力成熟。 |
+| antibody-design-agent | 抗体设计：表位定位、CDR 工程、双特异性构建。 |
+| aav-vector-design-agent | AAV 载体设计：衣壳选择、启动子优化、有效载荷容量。 |
+| protein-structure-prediction | 使用 AlphaFold3、ESMFold 或 Boltz 进行蛋白质结构预测和比较。 |
+| crispr-guide-design | CRISPR 向导 RNA 设计，具有靶向评分和脱靶最小化。 |
+| crispr-offtarget-predictor | 使用 CRISPOR/Cas-OFFinder 全基因组预测 CRISPR Cas9/Cas12 脱靶位点。 |
+| chemical-property-lookup | 通过名称/SMILES 从 PubChem、ChEMBL、DrugBank 查找化学性质。 |
+| chemistry-agent | 通用化学智能体，用于合成规划、反应预测和性质计算。 |
+| cryoem-ai-drug-design-agent | 从冷冻电镜结构进行 AI 引导药物设计：结合位点分析和对接。 |
+| time-resolved-cryoem-agent | 动态结构生物学的时间分辨冷冻电镜分析。 |
+| cnv-caller-agent | 专用 CNV 检测智能体，集成多种检测器并进行集成评分。 |
+| popeve-variant-predictor-agent | 使用基于群体的 EVE 进化模型进行变异致病性预测。 |
+| varcadd-pathogenicity | 从结构和进化角度对编码变异进行 VARCADD 致病性评分。 |
+| variant-interpretation-acmg | 基于证据的 ACMG/AMP 变异解读与分类框架。 |
+| gene-panel-design-agent | 设计用于临床或研究测序应用的靶向基因组合。 |
+| pharmacogenomics-agent | 药物基因组学分析：变异-药物相互作用预测和用药建议。 |
+| multi-ancestry-prs-agent | 使用祖先特异性权重计算多祖先多基因风险评分。 |
+| prs-net-deep-learning-agent | 使用 PRSnet 进行复杂性状的深度学习 PRS 预测。 |
+| cellfree-rna-agent | 无细胞 RNA 分析：血浆 cfRNA 分析用于液体活检诊断。 |
+| long-read-sequencing-agent | 长读段测序分析：SV 检测、甲基化、异构体发现、组装。 |
+| bayesian-optimizer | 贝叶斯优化用于生物医学研究的实验设计和超参数调优。 |
 
 ---
 
 ### 临床AI与医疗 (20个)
-chatehr-clinician-assistant, clinical-note-summarization, clinical-nlp-extractor, ehr-fhir-integration, fhir-development, digital-twin-clinical-agent, trial-eligibility-agent, trialgpt-matching, wearable-analysis-agent, multimodal-medical-imaging, prior-auth-coworker, care-coordination, claims-appeals, lab-results, drug-interaction-checker, regulatory-drafter, regulatory-drafting, biomedical-data-analysis, data-visualization-biomedical
+
+| 技能 | 描述 |
+|------|------|
+| chatehr-clinician-assistant | EHR 临床助手：病历摘要、结构化数据提取、临床决策支持。 |
+| clinical-note-summarization | 将临床病历摘要为带关键发现的结构化 SOAP 格式。 |
+| clinical-nlp-extractor | 从非结构化文本中提取临床实体（诊断、药物、操作）。 |
+| ehr-fhir-integration | EHR-FHIR 整合：HL7 FHIR 资源创建、查询和工作流自动化。 |
+| fhir-development | FHIR API 开发：构建 SMART on FHIR 应用和 FHIR 资源端点。 |
+| digital-twin-clinical-agent | 创建患者数字孪生用于治疗模拟和结局预测。 |
+| trial-eligibility-agent | 从 EHR 数据和试验标准评估患者临床试验入组资格。 |
+| trialgpt-matching | TrialGPT 患者-试验匹配，从临床病历进行资格评估。 |
+| wearable-analysis-agent | 分析可穿戴传感器数据：活动、睡眠、HRV、ECG 健康监测。 |
+| multimodal-medical-imaging | 多模态医学影像分析：CT、MRI、PET 融合和分割。 |
+| prior-auth-coworker | 保险审批流程的预授权工作流助手。 |
+| care-coordination | 护理协调智能体：多学科团队沟通和护理计划管理。 |
+| claims-appeals | 保险理赔申诉：文档准备和拒绝原因分析。 |
+| lab-results | 实验室结果解读：参考范围、趋势分析、危急值提醒。 |
+| drug-interaction-checker | 从患者用药清单检查药物相互作用并进行严重程度评分。 |
+| regulatory-drafter | 起草监管文件：FDA、EMA、ICH 文档准备。 |
+| regulatory-drafting | 医疗器械/药物申报的监管写作和文档结构化。 |
+| biomedical-data-analysis | 综合生物医学数据分析：统计、可视化和解读。 |
+| data-visualization-biomedical | 生物医学专用数据可视化：临床试验图、生存曲线、森林图。 |
 
 ---
 
 ### 研究基础设施与智能体框架 (20个)
-biomni-general-agent, biomni-research-agent, biokernel, biomcp-server, mcpmed-bioinformatics-server, kragen-knowledge-graph, leads-literature-mining, knowledge-synthesis, deep-research-swarm, research-literature, search-strategy, scientific-manuscript, cellular-senescence-agent, ngs-analysis, opentrons-protocol-agent, virtual-lab-agent, data-visualization-expert, lobster-bioinformatics
+
+| 技能 | 描述 |
+|------|------|
+| biomni-general-agent | BioMni 通用生物医学智能体，用于灵活的多步骤研究任务。 |
+| biomni-research-agent | BioMni 研究智能体，集成文献、数据库和分析功能。 |
+| biokernel | BioKernel：用于生物信息工具编排的统一计算内核。 |
+| biomcp-server | BioMCP：用于生物信息工具访问的模型上下文协议服务器。 |
+| mcpmed-bioinformatics-server | 为智能体提供医学生物信息工具访问的 MCP 服务器。 |
+| kragen-knowledge-graph | KRAGEN 知识图谱，用于生物医学实体关系和推理。 |
+| leads-literature-mining | LEADS 文献挖掘：从论文中自动提取生物学发现。 |
+| knowledge-synthesis | 从多个生物医学来源综合知识，生成结构化摘要。 |
+| deep-research-swarm | 多智能体群体，用于深度科学研究和并行文献综合。 |
+| research-literature | 研究文献管理：搜索、整理和综合科学论文。 |
+| search-strategy | 设计科学文献和数据库的系统检索策略。 |
+| scientific-manuscript | 科学手稿写作和修改，支持期刊特定格式。 |
+| cellular-senescence-agent | 细胞衰老分析：标志物评分、SASP 分析、组织老化评估。 |
+| ngs-analysis | 下一代测序数据分析编排和 QC。 |
+| opentrons-protocol-agent | Opentrons 液体处理器方案设计，用于自动化实验室工作流。 |
+| virtual-lab-agent | 虚拟实验室智能体，用于体外实验模拟和方案优化。 |
+| data-visualization-expert | 复杂科学和临床数据集的专业数据可视化。 |
+| lobster-bioinformatics | 通过 Lobster AI 运行生物信息分析：scRNA-seq、bulk RNA-seq、文献挖掘、数据集发现、QC 和可视化。 |
 
 ---
 
@@ -1257,4 +1569,19 @@ pipeline-design / automated-testing / release-management
 
 ### 开发工作流技能 (obra/superpowers, 14个)
 
-test-driven-development / systematic-debugging / dispatching-parallel-agents / writing-plans / executing-plans / brainstorming / writing-skills / verification-before-completion / requesting-code-review / receiving-code-review / subagent-driven-development / using-git-worktrees / finishing-a-development-branch / using-superpowers
+| 技能 | 描述 |
+|------|------|
+| test-driven-development | TDD 工作流：先写测试再实现，红-绿-重构循环确保代码可靠。 |
+| systematic-debugging | 结构化调试方法：假设形成、证据收集、根因分析。 |
+| dispatching-parallel-agents | 编排并行子智能体处理独立任务以最大化吞吐量。 |
+| writing-plans | 复杂多步骤任务前编写结构化实现计划。 |
+| executing-plans | 在隔离会话中按审查检查点执行书面实现计划。 |
+| brainstorming | 在实现前对需求和设计进行结构化创意探索。 |
+| writing-skills | 以正确格式创建和验证新的 SKILL.md 技能并完成部署验证。 |
+| verification-before-completion | 声明工作完成前运行验证命令并确认输出。 |
+| requesting-code-review | 带上下文、变更摘要和具体问题来结构化代码审查请求。 |
+| receiving-code-review | 以技术严谨性而非盲目接受来处理代码审查反馈。 |
+| subagent-driven-development | 将开发任务分解为子任务供并行子智能体执行。 |
+| using-git-worktrees | 为功能开发和计划执行创建隔离的 git 工作树。 |
+| finishing-a-development-branch | 完成开发分支：合并、PR 或清理，提供结构化决策选项。 |
+| using-superpowers | 元技能：在对话开始时发现并使用可用技能完成任何任务。 |
