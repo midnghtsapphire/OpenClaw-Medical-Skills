@@ -1550,3 +1550,21 @@ Agent 应当列出已安装的技能及其功能说明。
 | [using-git-worktrees](skills/using-git-worktrees/) | 为功能开发和计划执行创建隔离的 git 工作树。 |
 | [finishing-a-development-branch](skills/finishing-a-development-branch/) | 完成开发分支：合并、PR 或清理，提供结构化决策选项。 |
 | [using-superpowers](skills/using-superpowers/) | 元技能：在对话开始时发现并使用可用技能完成任何任务。 |
+
+## 致谢
+
+我们从以下优秀的项目中受益，如果你感兴趣，请访问它们～
+
+1. [awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills)
+2. [Anthropics Skills](https://github.com/anthropics/skills)
+3. [Skillsmp](https://skillsmp.com/)
+4. [awesome-claude-skills](https://github.com/BehiSecc/awesome-claude-skills)
+5. [ClawHub](https://clawhub.ai/)
+6. [水产市场](https://openclawmp.cc/)
+7. [Skills.Sh](https://skills.sh/)
+8. [awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills)
+9. [llmbase](https://llmbase.ai/openclaw/)
+10. [OpenClaw](https://docs.openclaw.ai/zh-CN)
+11. [awesome-openclaw-skills](https://github.com/VoltAgent/awesome-openclaw-skills)
+12. [claude-scientific-skills](https://github.com/K-Dense-AI/claude-scientific-skills)
+13. [LLMs-Universal-Life-Science-and-Clinical-Skills-](https://github.com/mdbabumiamssm/LLMs-Universal-Life-Science-and-Clinical-Skills-)
