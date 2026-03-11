@@ -4,8 +4,9 @@ Quick validation script for skills - minimal version
 """
 
 import re
-import yaml
 from pathlib import Path
+
+import yaml
 
 def validate_skill(skill_path):
     """Basic validation of a skill"""
@@ -17,7 +18,7 @@ def validate_skill(skill_path):
         return False, "SKILL.md not found"
 
     # Read and validate frontmatter
-    content = skill_md.read_text()
+    content = skill_md.read_text(encoding='utf-8', errors='replace')
     # Allow frontmatter block to appear anywhere in the file
     match = re.search(r'(?m)^---\n(.*?)\n---', content, re.DOTALL)
     if not match:
@@ -68,3 +69,18 @@ def validate_skill(skill_path):
     #         return False, f"Description is too long ({len(description)} characters). Maximum is 1024 characters."
 
     return True, "Skill is valid!"
+
+if __name__ == "__main__":
+    import sys
+
+    if len(sys.argv) != 2:
+        print("Usage: validate_skill.py path/to/SKILL.md", file=sys.stderr)
+        raise SystemExit(2)
+
+    ok, msg = validate_skill(sys.argv[1])
+    if ok:
+        print(msg)
+        raise SystemExit(0)
+    else:
+        print(msg, file=sys.stderr)
+        raise SystemExit(1)
