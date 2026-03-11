@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-OpenClaw%20%7C%20NanoClaw-orange?style=for-the-badge)](https://github.com/MedClaw-Org)
 
-**The largest open-source medical AI skills library for OpenClaw.**
+**The largest open-source medical AI skill library for OpenClaw.**
 
 *869 curated skills · Clinical · Genomics · Drug Discovery · Bioinformatics · Medical Devices*
 
