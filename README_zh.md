@@ -7,7 +7,7 @@
 [![GitHub Issues](https://img.shields.io/github/issues/FreedomIntelligence/OpenClaw-Medical-Skills?style=for-the-badge&logo=github)](https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/issues)
 [![技能数量](https://img.shields.io/badge/技能数量-872-brightgreen?style=for-the-badge)](https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills)
 [![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](LICENSE)
-[![Platform](https://img.shields.io/badge/平台-OpenClaw%20%7C%20NanoClaw-orange?style=for-the-badge)](https://github.com/FreedomIntelligence)
+[![Platform](https://img.shields.io/badge/平台-OpenClaw%20%7C%20NanoClaw-orange?style=for-the-badge)](https://github.com/openclaw/openclaw)
 
 **最大的开源医疗 AI 技能库，专为 OpenClaw 框架设计。**
 
@@ -21,7 +21,7 @@
 
 ## 项目简介
 
-**OpenClaw Medical Skills** 是一个包含 **872 个 AI Agent 技能**的精选集合，覆盖生物医学与临床研究的完整领域。这些技能专为 [OpenClaw](https://github.com/FreedomIntelligence) / [NanoClaw](https://github.com/FreedomIntelligence) —— 基于 Claude 的个人 AI 助手框架 —— 设计，能将通用 AI 智能体转变为强大的医学与科研研究伙伴。
+**OpenClaw Medical Skills** 是一个包含 **872 个 AI Agent 技能**的精选集合，覆盖生物医学与临床研究的完整领域。这些技能专为 [OpenClaw](https://github.com/openclaw/openclaw) / [NanoClaw](https://github.com/qwibitai/nanoclaw) —— 基于 Claude 的个人 AI 助手框架 —— 设计，能将通用 AI 智能体转变为强大的医学与科研研究伙伴。
 
 每个技能都是一个独立模块（`SKILL.md` 文件），它：
 - 为 Agent 注入专业领域知识与工作流
@@ -47,7 +47,7 @@
 
 ### 前置要求
 
-- 已安装并运行 [OpenClaw](https://github.com/openclaw/openclaw)，或使用替代方案 [NanoClaw](https://github.com/FreedomIntelligence)
+- 已安装并运行 [OpenClaw](https://github.com/openclaw/openclaw)，或使用替代方案 [NanoClaw](https://github.com/qwibitai/nanoclaw)
 - Git（用于克隆本仓库）
 
 ---
