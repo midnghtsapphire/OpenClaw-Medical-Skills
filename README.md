@@ -2,12 +2,12 @@
 
 <div align="center">
 
-[![GitHub Stars](https://img.shields.io/github/stars/MedClaw-Org/OpenClaw-Medical-Skills?style=for-the-badge&logo=github&color=gold)](https://github.com/MedClaw-Org/OpenClaw-Medical-Skills/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/MedClaw-Org/OpenClaw-Medical-Skills?style=for-the-badge&logo=github&color=blue)](https://github.com/MedClaw-Org/OpenClaw-Medical-Skills/network/members)
-[![GitHub Issues](https://img.shields.io/github/issues/MedClaw-Org/OpenClaw-Medical-Skills?style=for-the-badge&logo=github)](https://github.com/MedClaw-Org/OpenClaw-Medical-Skills/issues)
-[![Skills Count](https://img.shields.io/badge/Skills-869-brightgreen?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0tMiAxNWwtNS01IDEuNDEtMS40MUwxMCAxNC4xN2w3LjU5LTcuNTlMMTkgOGwtOSA5eiIvPjwvc3ZnPg==)](https://github.com/MedClaw-Org/OpenClaw-Medical-Skills/tree/main/skills)
+[![GitHub Stars](https://img.shields.io/github/stars/FreedomIntelligence/OpenClaw-Medical-Skills?style=for-the-badge&logo=github&color=gold)](https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/FreedomIntelligence/OpenClaw-Medical-Skills?style=for-the-badge&logo=github&color=blue)](https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/network/members)
+[![GitHub Issues](https://img.shields.io/github/issues/FreedomIntelligence/OpenClaw-Medical-Skills?style=for-the-badge&logo=github)](https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/issues)
+[![Skills Count](https://img.shields.io/badge/Skills-869-brightgreen?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0tMiAxNWwtNS01IDEuNDEtMS40MUwxMCAxNC4xN2w3LjU5LTcuNTlMMTkgOGwtOSA5eiIvPjwvc3ZnPg==)](https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills)
 [![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](LICENSE)
-[![Platform](https://img.shields.io/badge/Platform-OpenClaw%20%7C%20NanoClaw-orange?style=for-the-badge)](https://github.com/MedClaw-Org)
+[![Platform](https://img.shields.io/badge/Platform-OpenClaw%20%7C%20NanoClaw-orange?style=for-the-badge)](https://github.com/FreedomIntelligence)
 
 **The largest open-source medical AI skill library for OpenClaw.**
 
@@ -21,7 +21,7 @@
 
 ## What Is This?
 
-**OpenClaw Medical Skills** is a curated collection of **869 AI agent skills** covering the full spectrum of biomedical and clinical research. These skills are designed for [OpenClaw](https://github.com/MedClaw-Org) / [NanoClaw](https://github.com/MedClaw-Org) — Claude-based personal AI assistant frameworks — and transform a general-purpose AI agent into a powerful medical and scientific research companion.
+**OpenClaw Medical Skills** is a curated collection of **869 AI agent skills** covering the full spectrum of biomedical and clinical research. These skills are designed for [OpenClaw](https://github.com/FreedomIntelligence) / [NanoClaw](https://github.com/FreedomIntelligence) — Claude-based personal AI assistant frameworks — and transform a general-purpose AI agent into a powerful medical and scientific research companion.
 
 Each skill is a self-contained module (a `SKILL.md` file) that:
 - Teaches the agent specialized domain knowledge and workflows
@@ -49,7 +49,7 @@ This collection aggregates skills from **12+ open-source skill repositories** sp
 
 ### Requirements
 
-- [OpenClaw](https://github.com/openclaw/openclaw) installed and running, **or** [NanoClaw](https://github.com/MedClaw-Org) as an alternative
+- [OpenClaw](https://github.com/openclaw/openclaw) installed and running, **or** [NanoClaw](https://github.com/FreedomIntelligence) as an alternative
 - Git (for cloning this repo)
 
 ---
@@ -66,15 +66,24 @@ OpenClaw loads skills from two locations:
 #### Method 1 — Clone and Copy (Recommended)
 
 ```bash
-# Clone this repository
-git clone https://github.com/MedClaw-Org/OpenClaw-Medical-Skills.git
+# Clone this repository (skills only — skips large data files)
+git clone --depth=1 --no-checkout https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills.git
+cd OpenClaw-Medical-Skills
+git sparse-checkout init --cone
+git sparse-checkout set skills
+git checkout main
 
 # Install to your workspace skills directory
-cp -r OpenClaw-Medical-Skills/skills/* <your-workspace>/skills/
+cp -r skills/* <your-workspace>/skills/
 
 # Or install globally (available to all agents)
-cp -r OpenClaw-Medical-Skills/skills/* ~/.openclaw/skills/
+cp -r skills/* ~/.openclaw/skills/
 ```
+
+> **Note:** Some skills bundle large data files (databases, datasets). The
+> sparse-checkout method above avoids downloading them. If you need the full
+> repo including all data, install [Git LFS](https://git-lfs.com) first, then
+> run `git clone https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills.git`.
 
 Skills are picked up automatically on the next session. No restart needed.
 
@@ -132,7 +141,7 @@ NanoClaw loads skills into agent containers at startup from `container/skills/`.
 
 ```bash
 # Clone and copy into NanoClaw container skills directory
-git clone https://github.com/MedClaw-Org/OpenClaw-Medical-Skills.git
+git clone https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills.git
 cp -r OpenClaw-Medical-Skills/skills/* /path/to/nanoclaw/container/skills/
 
 # Rebuild the container to apply
