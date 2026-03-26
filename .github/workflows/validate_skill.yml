@@ -4,9 +4,11 @@ on:
   push:
     paths:
       - "skills/*/SKILL.md"
+      - "openclaw.plugin.json"
   pull_request:
     paths:
       - "skills/*/SKILL.md"
+      - "openclaw.plugin.json"
 
 jobs:
   check:

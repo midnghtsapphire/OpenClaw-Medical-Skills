@@ -76,14 +76,13 @@ cp -r OpenClaw-Medical-Skills/skills/* ~/.openclaw/skills/
 
 下次会话时技能自动生效，无需重启。
 
-#### 方法二 — ClawHub CLI
+#### 方法二 — OpenClaw CLI
 
-如果您使用 [ClawHub 注册表](https://clawhub.com)，可以搜索并安装单个技能。批量安装整个集合建议使用方法一。
+如果您使用 [OpenClaw 插件注册表](https://clawhub.com)，您可以搜索并安装单个技能。批量安装整个集合建议使用方法一。
 
 ```bash
-npm install -g clawhub
-clawhub install <skill-slug>    # 安装单个技能
-clawhub update --all            # 更新所有已安装技能
+openclaw plugins install <skill-slug>    # 安装单个技能
+openclaw plugins update                  # 更新所有已安装技能
 ```
 
 #### 方法三 — 配置额外技能目录
@@ -92,10 +91,8 @@ clawhub update --all            # 更新所有已安装技能
 
 ```json
 {
-  "skills": {
-    "load": {
-      "extraDirs": ["/path/to/OpenClaw-Medical-Skills/skills"]
-    }
+  "plugins": {
+    "local": ["/path/to/OpenClaw-Medical-Skills"]
   }
 }
 ```

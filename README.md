@@ -87,14 +87,13 @@ cp -r skills/* ~/.openclaw/skills/
 
 Skills are picked up automatically on the next session. No restart needed.
 
-#### Method 2 — ClawHub CLI
+#### Method 2 — OpenClaw CLI
 
-If you use the [ClawHub registry](https://clawhub.com), you can search and install individual skills from there. For bulk install from this collection, Method 1 is faster.
+If you use the [OpenClaw plugin registry](https://clawhub.com), you can search and install individual skills from there. For bulk install from this collection, Method 1 is faster.
 
 ```bash
-npm install -g clawhub
-clawhub install <skill-slug>    # install a single skill
-clawhub update --all            # update all installed skills
+openclaw plugins install <skill-slug>    # install a single skill
+openclaw plugins update                  # update all installed skills
 ```
 
 #### Method 3 — Configure Extra Directories
@@ -103,10 +102,8 @@ To point OpenClaw at a cloned copy of this repo permanently, add it to `~/.openc
 
 ```json
 {
-  "skills": {
-    "load": {
-      "extraDirs": ["/path/to/OpenClaw-Medical-Skills/skills"]
-    }
+  "plugins": {
+    "local": ["/path/to/OpenClaw-Medical-Skills"]
   }
 }
 ```
